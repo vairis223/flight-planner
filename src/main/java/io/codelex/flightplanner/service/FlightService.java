@@ -104,15 +104,15 @@ public class FlightService {
 
         return airports;
     }
-    private boolean isAirportsEqual(String airport1, String airport2) {
-        return airport1.toLowerCase().equals(airport2.toLowerCase());
+    private boolean isAirportsEqual(String departureAirport, String arrivalAirport) {
+        return departureAirport.toLowerCase().equals(arrivalAirport.toLowerCase());
     }
 
-    private boolean isDatesEqual(String date1, String date2) {
+    private boolean isDatesEqual(String departureDate, String arrivalDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate1 = LocalDate.parse(date1, formatter);
-       LocalDate localDate2 = LocalDate.parse(date2, formatter);
-        return localDate1.isEqual(localDate2);
+        LocalDate localDepartureDate = LocalDate.parse(departureDate, formatter);
+       LocalDate localArrivalDate  = LocalDate.parse(arrivalDate, formatter);
+        return localDepartureDate.isEqual(localArrivalDate );
     }
 
     public synchronized SearchResponse searchForFlights(FlightRequest flightRequest) {

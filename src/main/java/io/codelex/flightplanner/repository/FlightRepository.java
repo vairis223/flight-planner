@@ -24,4 +24,5 @@ public class FlightRepository {
     public void deleteAllFlights() {
         saveFlights.clear();
     }
+
 }
