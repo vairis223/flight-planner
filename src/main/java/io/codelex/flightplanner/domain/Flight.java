@@ -33,6 +33,7 @@ public class Flight {
     public Flight() {
     }
 
+
     public Long getId() {
                 return id;
         }

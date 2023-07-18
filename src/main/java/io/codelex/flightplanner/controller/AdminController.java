@@ -12,14 +12,14 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/admin-api")
 public class AdminController {
-    public FlightService flightService;
+    public static FlightService flightService;
 
     public AdminController(FlightService flightService) {
         this.flightService = flightService;
     }
 
     @PutMapping("/flights")
-    public ResponseEntity<Flight> addFlight(@Valid @RequestBody AddFlightRequest addFlightRequest) {
+    public static ResponseEntity<Flight> addFlight(@Valid @RequestBody AddFlightRequest addFlightRequest) {
         try {
             Flight flight = flightService.addFlight(addFlightRequest);
             return ResponseEntity.status(HttpStatus.CREATED).body(flight);

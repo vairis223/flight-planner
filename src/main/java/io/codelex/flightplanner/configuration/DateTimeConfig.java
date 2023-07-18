@@ -9,9 +9,6 @@ import java.time.format.DateTimeFormatter;
 
 @Configuration
 public class DateTimeConfig {
-    @Configuration
-    public static class ContactAppConfig {
-
         private static final String dateFormat = "yyyy-MM-dd";
         private static final String dateTimeFormat = "yyyy-MM-dd HH:mm";
 
@@ -24,4 +21,3 @@ public class DateTimeConfig {
             };
         }
     }
-}
