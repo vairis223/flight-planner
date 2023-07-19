@@ -104,11 +104,11 @@ public class FlightService {
 
         return airports;
     }
-    private boolean isAirportsEqual(String departureAirport, String arrivalAirport) {
+    private static boolean isAirportsEqual(String departureAirport, String arrivalAirport) {
         return departureAirport.toLowerCase().equals(arrivalAirport.toLowerCase());
     }
 
-    private boolean isDatesEqual(String departureDate, String arrivalDate) {
+    private static boolean isDatesEqual(String departureDate, String arrivalDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDepartureDate = LocalDate.parse(departureDate, formatter);
        LocalDate localArrivalDate  = LocalDate.parse(arrivalDate, formatter);

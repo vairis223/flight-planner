@@ -9,7 +9,6 @@ import io.codelex.flightplanner.service.FlightService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -36,12 +35,7 @@ public class ClearFlightTest {
         LocalDateTime arrivalTime = LocalDateTime.of(2023, 7, 18, 11, 30);
         String carrier = "Ryanair";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        AddFlightRequest request = new AddFlightRequest(
-                fromAirport,
-                toAirport,
-                carrier,
-                formatter.format(departureTime),
-                formatter.format(arrivalTime)
+        AddFlightRequest request = new AddFlightRequest(fromAirport, toAirport, carrier, formatter.format(departureTime), formatter.format(arrivalTime)
         );
         adminController.addFlight(request);
         testingController.clearFlights();
