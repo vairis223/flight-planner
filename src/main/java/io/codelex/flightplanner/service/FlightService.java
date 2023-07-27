@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 @Validated
 @Service
 public class FlightService {
@@ -104,6 +105,7 @@ public class FlightService {
 
         return airports;
     }
+
     private static boolean isAirportsEqual(String departureAirport, String arrivalAirport) {
         return departureAirport.toLowerCase().equals(arrivalAirport.toLowerCase());
     }
@@ -111,8 +113,8 @@ public class FlightService {
     private static boolean isDatesEqual(String departureDate, String arrivalDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDepartureDate = LocalDate.parse(departureDate, formatter);
-       LocalDate localArrivalDate  = LocalDate.parse(arrivalDate, formatter);
-        return localDepartureDate.isEqual(localArrivalDate );
+        LocalDate localArrivalDate = LocalDate.parse(arrivalDate, formatter);
+        return localDepartureDate.isEqual(localArrivalDate);
     }
 
     public synchronized SearchResponse searchForFlights(FlightRequest flightRequest) {

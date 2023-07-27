@@ -2,21 +2,17 @@ package io.codelex.flightplanner.domain;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
-
 import java.util.Objects;
 
 public class Airport {
     @Valid
     @NotBlank
-
     private String country;
     @Valid
     @NotBlank
-
     private String city;
     @Valid
     @NotBlank
-
     private String airport;
 
     public Airport() {

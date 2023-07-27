@@ -17,9 +17,10 @@ public class FlightRepository {
     public List<Flight> FlightList() {
         return this.saveFlights;
     }
+
     public synchronized void deleteFlightById(Long id) {
         saveFlights.removeIf(flight -> flight.getId().equals(id));
-            }
+    }
 
     public void deleteAllFlights() {
         saveFlights.clear();

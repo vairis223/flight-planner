@@ -7,8 +7,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 
-
-
 public class AddFlightRequest {
 
     @Valid
@@ -23,7 +21,6 @@ public class AddFlightRequest {
     private String departureTime;
     @NotBlank(message = "Arrival time must not be blank")
     private String arrivalTime;
-
 
 
     public AddFlightRequest(@NotNull Airport from, @NotNull Airport to, String carrier, String departureTime, String arrivalTime) {

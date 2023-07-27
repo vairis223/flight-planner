@@ -9,7 +9,6 @@ public class FlightRequest {
     private String to;
     @NotBlank
     private String departureDate;
-    @NotNull
 
     public FlightRequest() {
     }

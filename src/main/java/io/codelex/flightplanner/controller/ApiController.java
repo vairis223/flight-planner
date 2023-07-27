@@ -25,11 +25,13 @@ public class ApiController {
     public List<Airport> searchAirport(@RequestParam("search") String search) {
         return flightService.searchForAirports(search);
     }
+
     @GetMapping("/flights/{id}")
     public ResponseEntity<Flight> searchFlightById(@PathVariable("id") Long id) {
         Flight flight = flightService.getFlightById(id);
         return ResponseEntity.ok(flight);
     }
+
     @PostMapping("/flights/search")
     public SearchResponse searchFlights(@Valid @RequestBody FlightRequest searchFlight) {
         return flightService.searchForFlights(searchFlight);
