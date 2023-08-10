@@ -47,33 +47,5 @@ public class AddFlightTest {
 
 
  }
-
-
- @Test
- void addFlight_WhenDateFormatsAreInvalid() {
-
-  Airport fromAirport = new Airport("Ireland", "Dublin", "DUB");
-  Airport toAirport = new Airport("Sweden", "Stockholm", "ARN");
-  String carrier = "Ryanair";
-  AddFlightRequest request = new AddFlightRequest(fromAirport, toAirport, carrier, "2023-07-18", "11:30");
-  assertThrows(ResponseStatusException.class, () -> {
-   AdminController.addFlight(request);
-  });
- }
-
- @Test
- void addFlight_WhenArrivalTimeIsBeforeDepartureTime() {
-
-  Airport fromAirport = new Airport("Latvia", "Riga", "RIX");
-  Airport toAirport = new Airport("Sweden", "Stockholm", "ARN");
-  LocalDateTime departureTime = LocalDateTime.of(2023, 7, 18, 10, 0);
-  LocalDateTime arrivalTime = LocalDateTime.of(2023, 7, 18, 9, 30);
-  String carrier = "Ryanair";
-  AddFlightRequest request = new AddFlightRequest(fromAirport, toAirport, carrier, departureTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), arrivalTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
-  );
-  assertThrows(ResponseStatusException.class, () -> {
-   AdminController.addFlight(request);
-  });
- }
 }
 

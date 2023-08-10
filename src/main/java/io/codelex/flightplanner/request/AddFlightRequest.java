@@ -1,6 +1,5 @@
 package io.codelex.flightplanner.request;
 
-
 import io.codelex.flightplanner.domain.Airport;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;

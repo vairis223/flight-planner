@@ -1,24 +1,34 @@
 package io.codelex.flightplanner.domain;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.*;
+
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
+
 import java.util.Objects;
 
+@Entity
+@Table(name = "airports")
 public class Airport {
-    @Valid
-    @NotBlank
+
+    @NotNull
+    @NotEmpty
     private String country;
-    @Valid
-    @NotBlank
+    @NotNull
+    @NotEmpty
     private String city;
-    @Valid
-    @NotBlank
+
+    @Id
+    @Column(name = "airport_id")
+    @NotNull
+    @NotEmpty
     private String airport;
 
     public Airport() {
     }
 
-    public Airport(String country, String city, String airport) {
+    public Airport(@NotNull String country, @NotNull String city, @NotNull String airport) {
         this.country = country;
         this.city = city;
         this.airport = airport;
@@ -28,7 +38,7 @@ public class Airport {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(@NotNull String country) {
         this.country = country;
     }
 
@@ -36,7 +46,7 @@ public class Airport {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(@NotNull String city) {
         this.city = city;
     }
 
@@ -44,7 +54,7 @@ public class Airport {
         return airport;
     }
 
-    public void setAirport(String airport) {
+    public void setAirport(@NotNull String airport) {
         this.airport = airport;
     }
 

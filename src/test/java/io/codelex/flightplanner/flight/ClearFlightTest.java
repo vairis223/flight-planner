@@ -3,9 +3,8 @@ package io.codelex.flightplanner.flight;
 import io.codelex.flightplanner.controller.AdminController;
 import io.codelex.flightplanner.controller.TestingController;
 import io.codelex.flightplanner.domain.Airport;
-import io.codelex.flightplanner.repository.FlightRepository;
+import io.codelex.flightplanner.repository.FlightInMemoryRepository;
 import io.codelex.flightplanner.request.AddFlightRequest;
-import io.codelex.flightplanner.service.FlightService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,9 +21,8 @@ public class ClearFlightTest {
     TestingController testingController;
 
     @Autowired
-    FlightRepository flightRepository;
-    @Autowired
-    FlightService flightService;
+    FlightInMemoryRepository flightInMemoryRepository;
+
 
     @Test
     void clearAllFlights() {

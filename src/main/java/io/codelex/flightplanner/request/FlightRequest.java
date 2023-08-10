@@ -1,7 +1,6 @@
 package io.codelex.flightplanner.request;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public class FlightRequest {
     private String from;

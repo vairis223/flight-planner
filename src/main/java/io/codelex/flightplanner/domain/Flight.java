@@ -1,22 +1,40 @@
 package io.codelex.flightplanner.domain;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
-
+@Entity
+@Table(name = "flights")
 public class Flight {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "flight_id")
     private Long id;
-
+    @ManyToOne
+    @JoinColumn(name = "airport_from_id", referencedColumnName = "airport_id")
     private Airport from;
 
+    @ManyToOne
+    @JoinColumn(name = "airport_to_id", referencedColumnName = "airport_id")
     private Airport to;
 
+    @NotBlank
     private String carrier;
 
+    @NotNull
+    @Column(name = "departure_time")
     private LocalDateTime departureTime;
 
+    @NotNull
+    @Column(name = "arrival_time")
     private LocalDateTime arrivalTime;
 
+    public Flight() {
+    }
 
     public Flight(Long id, Airport from, Airport to, String carrier, LocalDateTime departureTime, LocalDateTime arrivalTime) {
         this.id = id;
@@ -27,10 +45,6 @@ public class Flight {
         this.arrivalTime = arrivalTime;
 
     }
-
-    public Flight() {
-    }
-
 
     public Long getId() {
         return id;
