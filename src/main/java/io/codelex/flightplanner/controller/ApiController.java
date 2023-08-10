@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class ApiController {
+
     public FlightService flightService;
 
     public ApiController(FlightService flightService) {
@@ -36,5 +37,4 @@ public class ApiController {
     public SearchResponse searchFlights(@Valid @RequestBody FlightRequest searchFlight) {
         return flightService.searchForFlights(searchFlight);
     }
-
 }

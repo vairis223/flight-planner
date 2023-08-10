@@ -5,7 +5,7 @@ import io.codelex.flightplanner.domain.Airport;
 import io.codelex.flightplanner.domain.Flight;
 import io.codelex.flightplanner.request.FlightRequest;
 import io.codelex.flightplanner.response.SearchResponse;
-import io.codelex.flightplanner.service.FlightService;
+import io.codelex.flightplanner.service.FlightServiceInMemory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.verify;
     public class SearchFlightTest {
 
     @Mock
-    FlightService flightService;
+    FlightServiceInMemory flightServiceInMemory;
 
     @InjectMocks
     ApiController apiController;
@@ -50,13 +50,13 @@ import static org.mockito.Mockito.verify;
         expectedFlights.add(flight1);
 
         SearchResponse mockResponse = new SearchResponse(expectedFlights.size(), expectedFlights.size(), expectedFlights);
-        Mockito.when(flightService.searchForFlights(Mockito.any(FlightRequest.class))).thenReturn(mockResponse);
+        Mockito.when(flightServiceInMemory.searchForFlights(Mockito.any(FlightRequest.class))).thenReturn(mockResponse);
 
         // When
         SearchResponse actualResponse = apiController.searchFlights(flightRequest);
 
         // Then
-        verify(flightService).searchForFlights(argThat(request ->
+        verify(flightServiceInMemory).searchForFlights(argThat(request ->
                 request.getFrom().equals("RIX") &&
                         request.getTo().equals("ARN") &&
                         request.getDepartureDate().equals(departureTime.format(formatter)) &&
